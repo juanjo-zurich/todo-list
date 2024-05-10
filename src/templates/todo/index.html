@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+
+{% block contenido %}
+    <section class="container-fluid">
+        <nav class="navbar">
+            <h1>{% block title %} Crear Tarea {% endblock %}</h1>
+            <a href="{{ url_for('todo.crear') }}" class="btn btn-success shadow">Nueva Tarea</a>
+        </nav>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col"> Tareas</th>
+                    <th class="col"> Estado</th>
+                    <th class="col" colspan="2"> Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for el in todos | reverse %}
+                {% if g.user.id == el.created_by %}
+                    <tr>
+                        <td>
+                            <h5>{{ el.title }}</h5>
+                            <p>{{ el.desc }}</p>
+                        </td>
+                        <td class="{% if el.state == True %}text-success{%else %}text-danger{% endif %}">
+                            {% if el.state == True %}
+                                <span>Completado</span>
+                            {% else %}
+                                <span>Incompleto</span>
+                            {% endif %}
+                            
+                            
+                        </td>
+                        <td>
+                            <a href="{{ url_for('todo.editar', id=el.id) }}" class="btn btn-info btn-sm shadow">Editar</a>
+                            <a href="{{ url_for('todo.eliminar', id=el.id) }}" class="btn btn-danger btn-sm shadow">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+{% block contenido %}
+    <section class="container-sm">
+        <h1 class="text-center mt-3 mb-3">{% block title %}Actualizar Tarea{% endblock %}</h1>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="">Título</label>
+                <input type="text" class="form-control" name='title' required value="{{ todo.title }}">
+            </div>
+            <div class="form-group">
+                <label for="">Descripción</label>
+                <textarea class="form-control" name="desc" rows="3">{{ todo.desc }}</textarea>
+            </div>
+            <div class="form-group mt-2">
+                <label for="">Completado</label>
+                <input type="checkbox" class="form-check-input" name='state' {% if todo.state == True %} checked {% endif %}
+                >
+            </div>
+
+            <br>
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Actualizar">
+                <a href="{{ url_for('todo.listar') }}" class="btn btn-secondary">Cancelar</a>
+            </div>
+
+        </form>
+    </section>
+
+
+{% endblock %}

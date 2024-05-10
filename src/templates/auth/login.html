@@ -1,0 +1,35 @@
+{% extends 'layout/base.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <div class="card  shadow mx-auto"style="width: 25rem;">
+                    <div class="card-header">
+                        <h1 class="text-center">
+                            {% block title %}
+                                Iniciar Sesión
+                            {% endblock %}
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="">Nombre de usuario</label>
+                                <input type="text" class="form-control" name = 'username' required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Contraseña</label>
+                                <input type="password" class="form-control" name = 'password' required >
+                            </div>
+                            <div class="text-center mt-3">
+                                <input type="submit" class="btn btn-primary shadow" value="Iniciar sesión">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
